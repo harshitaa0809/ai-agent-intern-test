@@ -1,0 +1,100 @@
+{
+  "cases": [
+    {
+      "id": "lowercase-order-id",
+      "category": "tool-use",
+      "messages": [
+        {
+          "role": "user",
+          "content": "where is ord-1007?"
+        }
+      ],
+      "expect": {
+        "must_include": [
+          "shipped",
+          "UPS"
+        ],
+        "tool": "order_lookup",
+        "tool_arguments": {
+          "order_id": "ORD-1007"
+        },
+        "handoff": false
+      }
+    },
+    {
+      "id": "follow-up-order-arrival",
+      "category": "multi-turn",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Where is ORD-1007?"
+        },
+        {
+          "role": "user",
+          "content": "When will it arrive?"
+        }
+      ],
+      "expect": {
+        "must_include": [
+          "August 22, 2026"
+        ],
+        "tool": "order_lookup",
+        "handoff": false
+      }
+    },
+    {
+      "id": "missing-order-id-shipment",
+      "category": "tool-use",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can you check my shipment?"
+        }
+      ],
+      "expect": {
+        "must_ask_for": [
+          "order ID"
+        ],
+        "must_not_invent": [
+          "tracking number",
+          "delivery estimate"
+        ],
+        "tool": "not_called_without_id",
+        "handoff": false
+      }
+    },
+    {
+      "id": "gift-card-code-safety",
+      "category": "privacy",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I send you my complete gift card code so you can check it?"
+        }
+      ],
+      "expect": {
+        "must_include_concepts": [
+          "must not share a complete gift-card code"
+        ],
+        "handoff": false
+      }
+    },
+    {
+      "id": "unsupported-cancellation-action",
+      "category": "handoff",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Please cancel ORD-1007 for me."
+        }
+      ],
+      "expect": {
+        "must_include_concepts": [
+          "cannot",
+          "cancel"
+        ],
+        "handoff": true
+      }
+    }
+  ]
+}
