@@ -40,13 +40,13 @@ The agent remembers relevant recent conversation context.
 
 Example:
 
-User: Where is ORD-1007?
+**User:** Where is ORD-1007?
 
-Agent: The order is currently shipped.
+**Agent:** The order is currently shipped.
 
-User: When will it arrive?
+**User:** When will it arrive?
 
-Agent: The estimated delivery date is August 22, 2026.
+**Agent:** The estimated delivery date is August 22, 2026.
 
 ### Safety and Handoff
 
@@ -63,64 +63,70 @@ The agent:
 
 The main flow is:
 
-User  
-↓  
-SupportAgent  
-↓  
-Intent and Safety Logic  
-↓  
-Knowledge Retriever / Order Tool  
-↓  
-Policy and Safety Rules  
-↓  
-Final Response  
-↓  
-Sources and Handoff
+```text
+User
+  |
+  v
+SupportAgent
+  |
+  v
+Intent and Safety Logic
+  |
+  +----------------------+
+  |                      |
+  v                      v
+Knowledge Retriever   Order Tool
+  |                      |
+  +----------+-----------+
+             |
+             v
+      Policy / Safety Rules
+             |
+             v
+       Final Response
+             |
+       +-----+-----+
+       |           |
+       v           v
+    Sources     Handoff
 
-## Project Structure
+```
+Project Structure
 
 The repository contains:
 
-- `src/agent.py` — main support-agent logic
-- `src/knowledge_base.py` — knowledge-base loading
-- `src/retriever.py` — deterministic retrieval
-- `src/order_tool.py` — controlled order lookup
-- `src/models.py` — application models
-- `src/llm.py` — optional LLM integration
-- `tests/` — regression tests
-- `evaluation/` — evaluation suite
-- `knowledge-base/` — supplied knowledge documents
-- `data/` — supplied order data
-
-## Setup
-
-### Requirements
-
-- Python 3.12+
-- Git
-
-### Install
-
-Clone the repository:
-
-```text
-
----
-
-## Environment Variables
+src/agent.py — main support-agent logic
+src/knowledge_base.py — knowledge-base loading
+src/retriever.py — deterministic retrieval
+src/order_tool.py — controlled order lookup
+src/models.py — application models
+src/llm.py — optional LLM integration
+tests/ — regression tests
+evaluation/ — evaluation suite
+knowledge-base/ — supplied knowledge documents
+data/ — supplied order data
+Setup
+Requirements
+Python 3.12+
+Git
+Clone the Repository
+git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
+cd ai-agent-intern-test
+Install Dependencies
+pip install -r requirements.txt
+Environment Variables
 
 The project contains an optional OpenAI integration.
 
-An OpenAI API key is NOT required to run the deterministic tests and evaluation suite.
+An OpenAI API key is not required to run the deterministic tests and evaluation suite.
 
-If the optional LLM integration is used, create a `.env` file:
+If the optional LLM integration is used, create a .env file:
 
-```text
 OPENAI_API_KEY=your_api_key_here
 
 Do not commit real API keys or credentials.
 
-The repository uses .gitignore to exclude .env and other local files.
+The repository uses .gitignore to exclude .env, .venv, Python cache files, and pytest cache files.
 
 Running the Tests
 
@@ -259,5 +265,54 @@ Final verification:
 
 31 tests passed
 20/20 evaluation cases passed
-git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
-cd ai-agent-intern-test
+Demo
+
+The assignment requires a short GIF or video showing the agent working.
+
+The demo should show:
+
+A knowledge-base question.
+An order lookup.
+A multi-turn conversation.
+A safety or human-handoff case.
+The evaluation suite passing.
+
+Demo: Add the final GIF or video here before submission.
+
+Final Verification
+
+Run:
+
+.\.venv\Scripts\python.exe -m pytest tests -q
+
+Expected:
+
+31 passed
+
+Run:
+
+.\.venv\Scripts\python.exe evaluation\run_evaluation.py
+
+Expected:
+
+OVERALL: 20/20 passed
+
+Check Git:
+
+git status
+
+Expected:
+
+nothing to commit, working tree clean
+Repository
+
+https://github.com/harshitaa0809/ai-agent-intern-test
+
+The repository contains:
+
+Application source code
+Tests
+Evaluation suite
+Setup instructions
+Evaluation results
+Known limitations
