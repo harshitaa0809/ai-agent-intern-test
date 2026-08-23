@@ -107,13 +107,19 @@ The repository contains:
 - `data/` — supplied order data
 ## Setup
 ### Requirements
+```
 Python 3.12+
 Git
+```
 ### Clone the Repository
+```
 git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
 cd ai-agent-intern-test
+```
 ### Install Dependencies
+```
 pip install -r requirements.txt
+```
 ## Environment Variables
 
 The project contains an optional OpenAI integration.
@@ -140,16 +146,16 @@ Final result:
 ```
 The tests cover:
 
-Agent behavior
-Retrieval
-Knowledge-base processing
-Order lookup
-Privacy
-Multi-turn conversation
-Prompt security
-Source conflicts
-Handoff behavior
-Tool reliability
+- Agent behavior
+- Retrieval
+- Knowledge-base processing
+- Order lookup
+- Privacy
+- Multi-turn conversation
+- Prompt security
+- Source conflicts
+- Handoff behavior
+- Tool reliability
 ## Running the Evaluation
 
 Run:
@@ -167,19 +173,20 @@ Result: 5/5 passed
 OVERALL: 20/20 passed
 ```
 ### Evaluation Categories
-Category	Result
-Abstention	1/1
-Conversation	1/1
-Groundedness	2/2
-Multi-source grounding	1/1
-Privacy	1/1
-Prompt security	1/1
-Retrieval	2/2
-Source conflict	1/1
-Tool reliability	3/3
-Tool use	2/2
-Handoff	1/1
-Multi-turn	1/1
+| Category | Result |
+|---|---:|
+| Abstention | 1/1 |
+| Conversation | 1/1 |
+| Groundedness | 2/2 |
+| Multi-source grounding | 1/1 |
+| Privacy | 1/1 |
+| Prompt security | 1/1 |
+| Retrieval | 2/2 |
+| Source conflict | 1/1 |
+| Tool reliability | 3/3 |
+| Tool use | 2/2 |
+| Handoff | 1/1 |
+| Multi-turn | 1/1 |
 ## Baseline vs Final
 
 The early baseline evaluation produced:
