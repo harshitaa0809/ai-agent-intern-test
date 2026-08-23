@@ -106,13 +106,13 @@ evaluation/ — evaluation suite
 knowledge-base/ — supplied knowledge documents
 data/ — supplied order data
 ##Setup
-Requirements
+###Requirements
 Python 3.12+
 Git
-##Clone the Repository
+###Clone the Repository
 git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
 cd ai-agent-intern-test
-##Install Dependencies
+###Install Dependencies
 pip install -r requirements.txt
 ##Environment Variables
 
@@ -166,7 +166,7 @@ Result: 5/5 passed
 
 OVERALL: 20/20 passed
 ```
-##Evaluation Categories
+###Evaluation Categories
 Category	Result
 Abstention	1/1
 Conversation	1/1
@@ -281,7 +281,7 @@ The evaluation suite passing.
 
 Demo: Add the final GIF or video here before submission.
 
-Final Verification
+##Final Verification
 
 Run:
 ```
