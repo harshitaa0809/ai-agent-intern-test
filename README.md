@@ -104,5 +104,160 @@ The repository contains:
 Clone the repository:
 
 ```text
+
+---
+
+## Environment Variables
+
+The project contains an optional OpenAI integration.
+
+An OpenAI API key is NOT required to run the deterministic tests and evaluation suite.
+
+If the optional LLM integration is used, create a `.env` file:
+
+```text
+OPENAI_API_KEY=your_api_key_here
+
+Do not commit real API keys or credentials.
+
+The repository uses .gitignore to exclude .env and other local files.
+
+Running the Tests
+
+Run the regression test suite:
+
+.\.venv\Scripts\python.exe -m pytest tests -q
+
+Final result:
+
+31 passed
+
+The tests cover:
+
+Agent behavior
+Retrieval
+Knowledge-base processing
+Order lookup
+Privacy
+Multi-turn conversation
+Prompt security
+Source conflicts
+Handoff behavior
+Tool reliability
+Running the Evaluation
+
+Run:
+
+.\.venv\Scripts\python.exe evaluation\run_evaluation.py
+
+Final verified result:
+
+VISIBLE CASES
+Result: 15/15 passed
+
+ORIGINAL CASES
+Result: 5/5 passed
+
+OVERALL: 20/20 passed
+Evaluation Categories
+Category	Result
+Abstention	1/1
+Conversation	1/1
+Groundedness	2/2
+Multi-source grounding	1/1
+Privacy	1/1
+Prompt security	1/1
+Retrieval	2/2
+Source conflict	1/1
+Tool reliability	3/3
+Tool use	2/2
+Handoff	1/1
+Multi-turn	1/1
+Baseline vs Final
+
+The early baseline evaluation produced:
+
+Visible cases: 6/15
+Original cases: 2/5
+Overall: 8/20
+
+The final implementation achieved:
+
+Visible cases: 15/15
+Original cases: 5/5
+Overall: 20/20
+
+The main improvements included:
+
+More reliable order-question detection.
+Correct order follow-up handling.
+Correct unknown-order handling.
+Correct cancelled-order handling.
+Privacy-safe order lookup.
+Better retrieval and source precedence.
+Correct TrailPlus return-window handling.
+Prompt-injection resistance.
+Abstention for insufficient information.
+Source-conflict detection.
+Unsupported-action handoff behavior.
+Safety and Privacy
+
+The agent does not:
+
+Invent order information.
+Expose customer email or shipping address.
+Expose internal notes or risk scores.
+Invent unsupported company policies.
+Follow instructions embedded in untrusted retrieved documents.
+Claim unsupported actions were completed.
+Silently choose one source when authoritative sources conflict.
+
+When information is insufficient, the agent recommends human confirmation instead of inventing an answer.
+
+Known Limitations
+Deterministic Retrieval
+
+The current retriever uses lightweight lexical retrieval instead of a production vector database.
+
+A production implementation could use embeddings or a vector database while retaining the current source-precedence and safety rules.
+
+Transactional Actions
+
+The agent can perform order lookups but does not perform transactional actions such as:
+
+Cancelling orders
+Issuing refunds
+Approving returns
+Changing addresses
+Creating replacements
+
+These actions would require authenticated tools, authorization, confirmation, and audit logging.
+
+Authentication
+
+The assignment uses an order ID for the mock lookup flow.
+
+A production system would require stronger customer authentication before exposing protected order information.
+
+Session Context
+
+The implementation retains relevant recent conversation context rather than an unlimited conversation history.
+
+AI Coding Assistance
+
+AI coding assistance was used during development for:
+
+Debugging Python errors.
+Understanding pytest failures.
+Analyzing evaluation failures.
+Improving routing and retrieval logic.
+Reviewing implementation ideas.
+
+AI suggestions were not blindly accepted. Important changes were validated using the regression tests and evaluation suite.
+
+Final verification:
+
+31 tests passed
+20/20 evaluation cases passed
 git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
 cd ai-agent-intern-test
