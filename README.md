@@ -202,29 +202,29 @@ Original cases: 5/5
 Overall: 20/20
 ```
 The main improvements included:
+- More reliable order-question detection.
+- Correct order follow-up handling.
+- Correct unknown-order handling.
+- Correct cancelled-order handling.
+- Privacy-safe order lookup.
+- Better retrieval and source precedence.
+- Correct TrailPlus return-window handling.
+- Prompt-injection resistance.
+- Abstention for insufficient information.
+- Source-conflict detection.
+- Unsupported-action handoff behavior.
 
-More reliable order-question detection.
-Correct order follow-up handling.
-Correct unknown-order handling.
-Correct cancelled-order handling.
-Privacy-safe order lookup.
-Better retrieval and source precedence.
-Correct TrailPlus return-window handling.
-Prompt-injection resistance.
-Abstention for insufficient information.
-Source-conflict detection.
-Unsupported-action handoff behavior.
 ## Safety and Privacy
 
 The agent does not:
 
-Invent order information.
-Expose customer email or shipping address.
-Expose internal notes or risk scores.
-Invent unsupported company policies.
-Follow instructions embedded in untrusted retrieved documents.
-Claim unsupported actions were completed.
-Silently choose one source when authoritative sources conflict.
+- Invent order information.
+- Expose customer email or shipping address.
+- Expose internal notes or risk scores.
+- Invent unsupported company policies.
+- Follow instructions embedded in untrusted retrieved documents.
+- Claim unsupported actions were completed.
+- Silently choose one source when authoritative sources conflict.
 
 When information is insufficient, the agent recommends human confirmation instead of inventing an answer.
 
@@ -239,11 +239,11 @@ A production implementation could use embeddings or a vector database while reta
 
 The agent can perform order lookups but does not perform transactional actions such as:
 
-Cancelling orders
-Issuing refunds
-Approving returns
-Changing addresses
-Creating replacements
+- Cancelling orders
+- Issuing refunds
+- Approving returns
+- Changing addresses
+- Creating replacements
 
 These actions would require authenticated tools, authorization, confirmation, and audit logging.
 
@@ -261,11 +261,11 @@ The implementation retains relevant recent conversation context rather than an u
 
 AI coding assistance was used during development for:
 
-Debugging Python errors.
-Understanding pytest failures.
-Analyzing evaluation failures.
-Improving routing and retrieval logic.
-Reviewing implementation ideas.
+- Debugging Python errors.
+- Understanding pytest failures.
+- Analyzing evaluation failures.
+- Improving routing and retrieval logic.
+- Reviewing implementation ideas.
 
 AI suggestions were not blindly accepted. Important changes were validated using the regression tests and evaluation suite.
 
@@ -280,11 +280,11 @@ The assignment requires a short GIF or video showing the agent working.
 
 The demo should show:
 
-A knowledge-base question.
-An order lookup.
-A multi-turn conversation.
-A safety or human-handoff case.
-The evaluation suite passing.
+1. A knowledge-base question.
+2. An order lookup.
+3. A multi-turn conversation.
+4. A safety or human-handoff case.
+5. The evaluation suite passing.
 
 Demo: Add the final GIF or video here before submission.
 
