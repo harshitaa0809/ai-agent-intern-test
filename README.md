@@ -1,99 +1,123 @@
-# Aster & Row — Reliable AI Support Agent
+Aster & Row — Reliable AI Support Agent
 
 A reliable customer-support agent built for the Aster & Row AI Agent Take-Home Assignment.
 
 The system combines knowledge-base retrieval, controlled order lookups, multi-turn conversation context, deterministic safety rules, source-conflict detection, privacy protection, and human handoff behavior.
 
----
-
-## 1. What This Project Solves
+1. What This Project Solves
 
 The customer scenario identified four recurring problems:
 
-1. Conflicting policy answers.
-2. Invented order information.
-3. Lost conversation context.
-4. Unsafe instructions inside retrieved content.
+Conflicting policy answers.
+
+Invented order information.
+
+Lost conversation context.
+
+Unsafe instructions inside retrieved content.
 
 This implementation addresses these problems by:
 
-- Retrieving relevant knowledge-base passages.
-- Preferring active and authoritative policy sources.
-- Using an explicit order lookup tool instead of guessing order information.
-- Maintaining relevant recent conversation context.
-- Treating retrieved documents as untrusted data.
-- Protecting internal customer and order fields.
-- Abstaining when supplied information is insufficient.
-- Detecting conflicts between authoritative sources.
-- Recommending human assistance when an action cannot safely be completed.
+Retrieving relevant knowledge-base passages.
 
----
+Preferring active and authoritative policy sources.
 
-## 2. Key Capabilities
+Using an explicit order lookup tool instead of guessing order information.
 
-### Knowledge-base RAG
+Maintaining relevant recent conversation context.
 
-- Loads and chunks the supplied Markdown knowledge-base documents.
-- Preserves document metadata.
-- Retrieves relevant passages.
-- Uses source metadata when selecting policy and product information.
-- Returns source filenames with policy and product answers.
-- Avoids unsupported claims.
-- Handles insufficient information safely.
-- Detects conflicts between active authoritative sources.
+Treating retrieved documents as untrusted data.
 
-### Order Lookup
+Protecting internal customer and order fields.
 
-- Uses the supplied order dataset.
-- Requires an order ID when order information is requested.
-- Normalizes lowercase order IDs.
-- Handles unknown order IDs safely.
-- Uses the current order status as authoritative.
-- Does not invent delivery estimates.
-- Avoids stale delivery information for cancelled or returned orders.
-- Does not expose customer email, address, internal notes, or risk scores.
-- Does not claim that a lookup happened when it did not.
+Abstaining when supplied information is insufficient.
 
-### Multi-turn Conversation
+Detecting conflicts between authoritative sources.
+
+Recommending human assistance when an action cannot safely be completed.
+
+2. Key Capabilities
+
+Knowledge-base RAG
+
+Loads and chunks the supplied Markdown knowledge-base documents.
+
+Preserves document metadata.
+
+Retrieves relevant passages.
+
+Uses source metadata when selecting policy and product information.
+
+Returns source filenames with policy and product answers.
+
+Avoids unsupported claims.
+
+Handles insufficient information safely.
+
+Detects conflicts between active authoritative sources.
+
+Order Lookup
+
+Uses the supplied order dataset.
+
+Requires an order ID when order information is requested.
+
+Normalizes lowercase order IDs.
+
+Handles unknown order IDs safely.
+
+Uses the current order status as authoritative.
+
+Does not invent delivery estimates.
+
+Avoids stale delivery information for cancelled or returned orders.
+
+Does not expose customer email, address, internal notes, or risk scores.
+
+Does not claim that a lookup happened when it did not.
+
+Multi-turn Conversation
 
 The agent maintains relevant recent context for follow-up questions.
 
 Example:
 
-**User:** Where is ORD-1007?
+User: Where is ORD-1007?
 
-**Agent:** The order is currently shipped.
+Agent: The order is currently shipped.
 
-**User:** When will it arrive?
+User: When will it arrive?
 
-**Agent:** The estimated delivery date is August 22, 2026.
+Agent: The estimated delivery date is August 22, 2026.
 
 The agent also supports contextual follow-ups:
 
-**User:** Do you ship internationally?
+User: Do you ship internationally?
 
-**Agent:** Yes, according to the supplied shipping policy.
+Agent: Yes, according to the supplied shipping policy.
 
-**User:** What about Canada?
+User: What about Canada?
 
-**Agent:** Canada is covered by the international shipping policy.
+Agent: Canada is covered by the international shipping policy.
 
-### Safety and Handoff
+Safety and Handoff
 
 The agent can:
 
-- Refuse requests for internal or private data.
-- Reject instructions embedded in retrieved documents.
-- Abstain when information is insufficient.
-- Surface genuine source conflicts.
-- Recommend human assistance.
-- Avoid claiming unsupported actions were completed.
+Refuse requests for internal or private data.
 
----
+Reject instructions embedded in retrieved documents.
 
-## 3. Architecture
+Abstain when information is insufficient.
 
-```text
+Surface genuine source conflicts.
+
+Recommend human assistance.
+
+Avoid claiming unsupported actions were completed.
+
+3. Architecture
+
                          User
                           |
                           v
