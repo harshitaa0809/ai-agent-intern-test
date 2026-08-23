@@ -91,30 +91,30 @@ Knowledge Retriever   Order Tool
     Sources     Handoff
 
 ```
-##Project Structure
+## Project Structure
 
 The repository contains:
 
-src/agent.py — main support-agent logic
-src/knowledge_base.py — knowledge-base loading
-src/retriever.py — deterministic retrieval
-src/order_tool.py — controlled order lookup
-src/models.py — application models
-src/llm.py — optional LLM integration
-tests/ — regression tests
-evaluation/ — evaluation suite
-knowledge-base/ — supplied knowledge documents
-data/ — supplied order data
-##Setup
-###Requirements
+- `src/agent.py` — main support-agent logic
+- `src/knowledge_base.py` — knowledge-base loading
+- `src/retriever.py` — deterministic retrieval
+- `src/order_tool.py` — controlled order lookup
+- `src/models.py` — application models
+- `src/llm.py` — optional LLM integration
+- `tests/` — regression tests
+- `evaluation/` — evaluation suite
+- `knowledge-base/` — supplied knowledge documents
+- `data/` — supplied order data
+## Setup
+### Requirements
 Python 3.12+
 Git
-###Clone the Repository
+### Clone the Repository
 git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
 cd ai-agent-intern-test
-###Install Dependencies
+### Install Dependencies
 pip install -r requirements.txt
-##Environment Variables
+## Environment Variables
 
 The project contains an optional OpenAI integration.
 
@@ -128,7 +128,7 @@ Do not commit real API keys or credentials.
 
 The repository uses .gitignore to exclude .env, .venv, Python cache files, and pytest cache files.
 
-##Running the Tests
+## Running the Tests
 
 Run the regression test suite:
 ```
@@ -150,7 +150,7 @@ Prompt security
 Source conflicts
 Handoff behavior
 Tool reliability
-##Running the Evaluation
+## Running the Evaluation
 
 Run:
 ```
@@ -166,7 +166,7 @@ Result: 5/5 passed
 
 OVERALL: 20/20 passed
 ```
-###Evaluation Categories
+### Evaluation Categories
 Category	Result
 Abstention	1/1
 Conversation	1/1
@@ -180,7 +180,7 @@ Tool reliability	3/3
 Tool use	2/2
 Handoff	1/1
 Multi-turn	1/1
-##Baseline vs Final
+## Baseline vs Final
 
 The early baseline evaluation produced:
 ```
@@ -207,7 +207,7 @@ Prompt-injection resistance.
 Abstention for insufficient information.
 Source-conflict detection.
 Unsupported-action handoff behavior.
-##Safety and Privacy
+## Safety and Privacy
 
 The agent does not:
 
@@ -221,14 +221,14 @@ Silently choose one source when authoritative sources conflict.
 
 When information is insufficient, the agent recommends human confirmation instead of inventing an answer.
 
-##Known Limitations
-###Deterministic Retrieval
+## Known Limitations
+### Deterministic Retrieval
 
 The current retriever uses lightweight lexical retrieval instead of a production vector database.
 
 A production implementation could use embeddings or a vector database while retaining the current source-precedence and safety rules.
 
-###Transactional Actions
+### Transactional Actions
 
 The agent can perform order lookups but does not perform transactional actions such as:
 
@@ -240,17 +240,17 @@ Creating replacements
 
 These actions would require authenticated tools, authorization, confirmation, and audit logging.
 
-###Authentication
+### Authentication
 
 The assignment uses an order ID for the mock lookup flow.
 
 A production system would require stronger customer authentication before exposing protected order information.
 
-###Session Context
+### Session Context
 
 The implementation retains relevant recent conversation context rather than an unlimited conversation history.
 
-##AI Coding Assistance
+## AI Coding Assistance
 
 AI coding assistance was used during development for:
 
@@ -267,7 +267,7 @@ Final verification:
 31 tests passed
 20/20 evaluation cases passed
 ```
-##Demo
+## Demo
 
 The assignment requires a short GIF or video showing the agent working.
 
@@ -281,7 +281,7 @@ The evaluation suite passing.
 
 Demo: Add the final GIF or video here before submission.
 
-##Final Verification
+## Final Verification
 
 Run:
 ```
@@ -307,7 +307,7 @@ Expected:
 ```
 nothing to commit, working tree clean
 ```
-##Repository
+## Repository
 
 https://github.com/harshitaa0809/ai-agent-intern-test
 
