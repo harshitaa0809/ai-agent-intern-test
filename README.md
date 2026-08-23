@@ -91,7 +91,7 @@ Knowledge Retriever   Order Tool
     Sources     Handoff
 
 ```
-Project Structure
+##Project Structure
 
 The repository contains:
 
@@ -105,39 +105,39 @@ tests/ — regression tests
 evaluation/ — evaluation suite
 knowledge-base/ — supplied knowledge documents
 data/ — supplied order data
-Setup
+##Setup
 Requirements
 Python 3.12+
 Git
-Clone the Repository
+##Clone the Repository
 git clone https://github.com/harshitaa0809/ai-agent-intern-test.git
 cd ai-agent-intern-test
-Install Dependencies
+##Install Dependencies
 pip install -r requirements.txt
-Environment Variables
+##Environment Variables
 
 The project contains an optional OpenAI integration.
 
 An OpenAI API key is not required to run the deterministic tests and evaluation suite.
 
 If the optional LLM integration is used, create a .env file:
-
+```
 OPENAI_API_KEY=your_api_key_here
-
+```
 Do not commit real API keys or credentials.
 
 The repository uses .gitignore to exclude .env, .venv, Python cache files, and pytest cache files.
 
-Running the Tests
+##Running the Tests
 
 Run the regression test suite:
-
+```
 .\.venv\Scripts\python.exe -m pytest tests -q
-
+```
 Final result:
-
+```
 31 passed
-
+```
 The tests cover:
 
 Agent behavior
@@ -150,14 +150,14 @@ Prompt security
 Source conflicts
 Handoff behavior
 Tool reliability
-Running the Evaluation
+##Running the Evaluation
 
 Run:
-
+```
 .\.venv\Scripts\python.exe evaluation\run_evaluation.py
-
+```
 Final verified result:
-
+```
 VISIBLE CASES
 Result: 15/15 passed
 
@@ -165,7 +165,8 @@ ORIGINAL CASES
 Result: 5/5 passed
 
 OVERALL: 20/20 passed
-Evaluation Categories
+```
+##Evaluation Categories
 Category	Result
 Abstention	1/1
 Conversation	1/1
@@ -179,20 +180,20 @@ Tool reliability	3/3
 Tool use	2/2
 Handoff	1/1
 Multi-turn	1/1
-Baseline vs Final
+##Baseline vs Final
 
 The early baseline evaluation produced:
-
+```
 Visible cases: 6/15
 Original cases: 2/5
 Overall: 8/20
-
+```
 The final implementation achieved:
-
+```
 Visible cases: 15/15
 Original cases: 5/5
 Overall: 20/20
-
+```
 The main improvements included:
 
 More reliable order-question detection.
@@ -206,7 +207,7 @@ Prompt-injection resistance.
 Abstention for insufficient information.
 Source-conflict detection.
 Unsupported-action handoff behavior.
-Safety and Privacy
+##Safety and Privacy
 
 The agent does not:
 
@@ -220,14 +221,14 @@ Silently choose one source when authoritative sources conflict.
 
 When information is insufficient, the agent recommends human confirmation instead of inventing an answer.
 
-Known Limitations
-Deterministic Retrieval
+##Known Limitations
+###Deterministic Retrieval
 
 The current retriever uses lightweight lexical retrieval instead of a production vector database.
 
 A production implementation could use embeddings or a vector database while retaining the current source-precedence and safety rules.
 
-Transactional Actions
+###Transactional Actions
 
 The agent can perform order lookups but does not perform transactional actions such as:
 
@@ -239,17 +240,17 @@ Creating replacements
 
 These actions would require authenticated tools, authorization, confirmation, and audit logging.
 
-Authentication
+###Authentication
 
 The assignment uses an order ID for the mock lookup flow.
 
 A production system would require stronger customer authentication before exposing protected order information.
 
-Session Context
+###Session Context
 
 The implementation retains relevant recent conversation context rather than an unlimited conversation history.
 
-AI Coding Assistance
+##AI Coding Assistance
 
 AI coding assistance was used during development for:
 
@@ -262,10 +263,11 @@ Reviewing implementation ideas.
 AI suggestions were not blindly accepted. Important changes were validated using the regression tests and evaluation suite.
 
 Final verification:
-
+```
 31 tests passed
 20/20 evaluation cases passed
-Demo
+```
+##Demo
 
 The assignment requires a short GIF or video showing the agent working.
 
@@ -282,29 +284,30 @@ Demo: Add the final GIF or video here before submission.
 Final Verification
 
 Run:
-
+```
 .\.venv\Scripts\python.exe -m pytest tests -q
-
+```
 Expected:
-
+```
 31 passed
-
+```
 Run:
-
+```
 .\.venv\Scripts\python.exe evaluation\run_evaluation.py
-
+```
 Expected:
-
+```
 OVERALL: 20/20 passed
-
+```
 Check Git:
-
+```
 git status
-
+```
 Expected:
-
+```
 nothing to commit, working tree clean
-Repository
+```
+##Repository
 
 https://github.com/harshitaa0809/ai-agent-intern-test
 
