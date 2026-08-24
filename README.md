@@ -276,9 +276,9 @@ Final verification:
 ```
 ## Demo
 
-The following short video demonstrates the agent working:
+The following GIF demonstrates the agent working:
 
-<video src="./demo.mp4" controls width="800"></video>
+![Aster & Row AI Support Agent Demo](./demo.gif)
 
 The demo shows:
 
