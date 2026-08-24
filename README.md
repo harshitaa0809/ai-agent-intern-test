@@ -276,17 +276,17 @@ Final verification:
 ```
 ## Demo
 
-The assignment requires a short GIF or video showing the agent working.
+The following short video demonstrates the agent working:
 
-The demo should show:
+<video src="./demo.mp4" controls width="800"></video>
+
+The demo shows:
 
 1. A knowledge-base question.
 2. An order lookup.
 3. A multi-turn conversation.
-4. A safety or human-handoff case.
-5. The evaluation suite passing.
-
-Demo: Add the final GIF or video here before submission.
+4. A privacy and human-handoff case.
+5. The completed agent workflow.
 
 ## Final Verification
 
